@@ -50,22 +50,15 @@
    
 </ul>
 
-<ul class="list-group mx-auto col-3 my-3">
-    <li 
-        class="list-group-item"
-        *ngFor="let pessoa of pessoas"
-    >
-         o nome da pessoa é  {{pessoa.nome}} {{pessoa.sobrenome}} e a sua profissão é {{pessoa.profissao}}
-    </li>
-</ul>
 
+<spa-list-people></spa-list-people>
 
 <!--ngFor por debaixo dos panos-->
 
 <ul class="list-group mx-auto col-3 my-3">
     <ng-template ngFor let-pessoa [ngForOf]="pessoas">
         <li class="list-group-item">
-            O nome da pessoa é  {{pessoa.nome}} {{pessoa.sobrenome}} e a sua profissão é {{pessoa.profissao}}
+            O nome da pessoa é  {{pessoa.firstName}} {{pessoa.lastName}} e a sua idade é {{pessoa.age}}
         </li>
     </ng-template>
 
@@ -84,3 +77,14 @@
     >
     <h4>Saída: {{ text }}</h4>
 </div>
+
+<div class="container my-5">
+    <div class="row d-flex align-itens-center justify-content-center">
+        <h2 class="text-center">Listagem de Personagens Rick and Morty</h2>
+        <div class="col-12">
+            <spa-list-api></spa-list-api>
+        </div>
+    </div>
+</div>
+
+

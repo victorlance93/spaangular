@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { PeopleService } from './shared/services/people.service';
 
 @Component({
   selector: 'spa-root',
@@ -14,37 +15,18 @@ export class AppComponent implements OnInit{
 
   pessoas = [
     {
-      nome:'Victor',
-      sobrenome:'Lance',
-      profissao: 'Programador'
-    },
-    {
-      nome:'Ezide',
-      sobrenome:'Lance',
-      profissao: 'Cabelereira'
-    },
-    {
-      nome:'Helena',
-      sobrenome:'Lance',
-      profissao: 'Encrenqueira'
-    },
-    {
-      nome:'Roberto',
-      sobrenome:'Lance',
-      profissao: 'Chato'
-    },
-    {
-      nome:'Paulo',
-      sobrenome:'Lance',
-      profissao: 'Chorão'
+      firstName: '',
+      lastName: '',
+      age: 0
     }
   ];
 
-  constructor() {
+  constructor(private peopleService: PeopleService) {
 
   }
 
   ngOnInit(): void {
+    this.getPeople();
     let interval = setInterval(() => {
       this.count++;
       if(this.count === 10){
@@ -55,5 +37,11 @@ export class AppComponent implements OnInit{
 
  clicou(nome: string): void {
     console.log('clicou em mim',nome)
+  }
+
+  getPeople() {
+    this.peopleService.getPeople().subscribe(people => {
+      this.pessoas = people;
+    })
   }
 }
